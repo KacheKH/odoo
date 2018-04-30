@@ -1,0 +1,43 @@
+<openerp>
+  <data>
+    <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="petro.list_productos">
+      <field name="name">Listado</field>
+      <field name="model">petro.producto</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="codbod"/>
+          <field name="descart"/>
+          <field name="grupmat"/>
+          <field name="umed"/>
+          <field name="cantstock"/>
+          <field name="codart"/>
+        </tree>
+      </field>
+    </record>
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="petro.action_window">
+      <field name="name">Inventario Productos</field>
+      <field name="res_model">petro.producto</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="petro.action_server"><field name="name">Petro server</field><field name="model_id" ref="model_petro_petro"/><field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field></record>
+    -->
+    <!-- Top menu item -->
+    
+    <menuitem name="Petro" id="petro.menu_root"/>
+    
+    <!-- menu categories -->
+    <menuitem name="Productos" id="petro.productos" parent="petro.menu_root"/>
+    <!-- actions -->
+    <menuitem name="Listado" id="petro.menu_1_list" parent="petro.productos" action="petro.action_window"/>
+  </data>
+</openerp>
