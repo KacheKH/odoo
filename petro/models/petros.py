@@ -10,9 +10,13 @@ class petro(models.Model):
     descinv = fields.Char('Descripcion SubInventario')
     grupmat = fields.Char('Grupo Material')
     codart = fields.Char('Codigo Articulo')
-    cantstock = fields.Float('Cantidad Inventario Stock')
+    cantstock = fields.Integer('Cantidad Inventario Stock')
     umed = fields.Char('Unidad Medida')
     descart = fields.Text('Descripcion Articulo')
+    cnew = fields.Char('Codigo Nuevo')
+    desp = fields.Char('Descripción Español')
+    ding = fields.Char('Descripción Ingles')
+    img = fields.Binary('Imagen del producto')
 
 #     @api.depends('value')
 #     def _value_pc(self):

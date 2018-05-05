@@ -1,2 +1,2 @@
 # odoo
-Inventario Odoo Propio Funcional
+Inventario Odoo P

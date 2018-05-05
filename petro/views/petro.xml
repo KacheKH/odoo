@@ -1,5 +1,45 @@
 <openerp>
   <data>
+    <!-- zona seleccionas de kanban de datos -->
+    <record id="petro.list_kanban" model="ir.ui.view">
+      <field name="name">kanban</field>
+      <field name="model">petro.producto</field>
+      <field name="arch" type="xml">
+        <kanban>
+          <field name="codbod"/>
+          <field name="descart"/>
+          <field name="grupmat"/>
+          <field name="umed"/>
+          <field name="cantstock"/>
+          <templates>
+            <t t-name="kanban-box">
+              <div class="oe_kanban_global_click">
+                <div class="o_kanban_image">
+                  <img t-att-src="kanban_image('petro.producto','img',record.id.value )" />
+                </div>
+                <div class="oe_kanban_details">
+                  <strong>
+                    <span t-if="record.id.value"></span>
+                    <field name="descart" />
+                  </strong>
+                  <div name="tags" />
+                  <field name="codbod"/>
+                  <div name="tags" />
+                  <field name="grupmat"/>
+                  <div name="tags" />
+                  <field name="cantstock"/>
+                  <ul>
+                    <li>
+                      <field name="umed"/>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </t>
+          </templates>
+        </kanban>
+      </field>
+    </record>
     <!-- explicit list view definition -->
     <record model="ir.ui.view" id="petro.list_productos">
       <field name="name">Listado</field>
@@ -12,6 +52,7 @@
           <field name="umed"/>
           <field name="cantstock"/>
           <field name="codart"/>
+          <field name="cnew"/>
         </tree>
       </field>
     </record>
@@ -19,22 +60,51 @@
     <record model="ir.actions.act_window" id="petro.action_window">
       <field name="name">Inventario Productos</field>
       <field name="res_model">petro.producto</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">kanban,tree,form</field>
     </record>
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="petro.action_server"><field name="name">Petro server</field><field name="model_id" ref="model_petro_petro"/><field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field></record>
-    -->
+    <!-- Zona designada para la busqueda personalizada -->
+    <record id="petro.list_search" model="ir.ui.view">
+      <field name="name">Busqueda de Inventario</field>
+      <field name="model">petro.producto</field>
+      <field name="arch" type="xml">
+        <search >
+          <field name="codbod"/>
+          <field name="descart"/>
+          <field name="grupmat"/>
+          <field name="cantstock"/>
+          <field name="codart"/>
+          <field name="cnew"/>
+        </search>
+      </field>
+    </record>
+    <!-- zona designada para el ingreso de datos -->
+    <record model="ir.ui.view" id="petro.list_form">
+      <field name="name">Creación e edición</field>
+      <field name="model">petro.producto</field>
+      <field eval="1" name="priority" />
+      <field name="arch" type="xml">
+        <form string="Productos2">
+          <sheet>
+            <notebook>
+              <page string="Productos">
+                <group>
+                  <field name="img" widget="image" string="Imagen del Producto" class="oe-avatar" />
+                  <field name="codbod"/>
+                  <field name="descart"/>
+                  <field name="grupmat"/>
+                  <field name="umed"/>
+                  <field name="cantstock"/>
+                  <field name="codart"/>
+                  <field name="cnew"/>
+                </group>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
     <!-- Top menu item -->
-    
     <menuitem name="Petro" id="petro.menu_root"/>
-    
     <!-- menu categories -->
     <menuitem name="Productos" id="petro.productos" parent="petro.menu_root"/>
     <!-- actions -->
