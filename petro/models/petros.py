@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from openerp import models, fields
-
+from openerp import models, fields, api
 
 class petro(models.Model):
     _name = 'petro.producto'

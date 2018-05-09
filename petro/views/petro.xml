@@ -91,6 +91,8 @@
                   <field name="img" widget="image" string="Imagen del Producto" class="oe-avatar" />
                   <field name="codbod"/>
                   <field name="descart"/>
+                  <field name="desp"/>
+                  <field name="ding"/>
                   <field name="grupmat"/>
                   <field name="umed"/>
                   <field name="cantstock"/>
