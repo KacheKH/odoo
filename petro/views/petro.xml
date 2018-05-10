@@ -92,6 +92,7 @@
                   <field name="codbod"/>
                   <field name="descart"/>
                   <field name="desp"/>
+                  <field name="descinv"/>
                   <field name="ding"/>
                   <field name="grupmat"/>
                   <field name="umed"/>
