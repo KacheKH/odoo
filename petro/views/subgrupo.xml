@@ -1,0 +1,56 @@
+<openerp>
+    <data>
+        <!-- Vista tipo lista Horinzontal -->
+        <record model="ir.ui.view" id="petro.list_subgrupos">
+            <field name="name">Listado</field>
+            <field name="model">petro.subgrupo</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="codsubg"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+        <!-- vistas de trs diferentes tipos Horinzontal,recuadro,hoja de datos -->
+        <record model="ir.actions.act_window" id="petro.action_window_subgrupos">
+            <field name="name">Subrupos</field>
+            <field name="res_model">petro.subgrupo</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Zona designada para la busqueda personalizada -->
+        <record id="petro.list_search_subgrupos" model="ir.ui.view">
+            <field name="name">Búsqueda de Subgrupos</field>
+            <field name="model">petro.subgrupo</field>
+            <field name="arch" type="xml">
+                <search >
+                    <field name="codsubg"/>
+                    <field name="name"/>
+                </search>
+            </field>
+        </record>
+        <!-- zona designada para el ingreso de datos -->
+        <record model="ir.ui.view" id="petro.list_form_subgrupos">
+            <field name="name">Creación e edición</field>
+            <field name="model">petro.subgrupo</field>
+            <field eval="1" name="priority" />
+            <field name="arch" type="xml">
+                <form string="Productos2">
+                    <sheet>
+                        <notebook>
+                            <page string="Subgrupos">
+                                <group>
+                                    <field name="codsubg"/>
+                                    <field name="name"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- menu categories -->
+        <menuitem name="Subgrupos" id="petro.subgrupos" parent="petro.menu_root"/>
+        <!-- actions -->
+        <menuitem name="Listado" id="petro.subgrupos_list" parent="petro.subgrupos" action="petro.action_window_subgrupos"/>
+    </data>
+</openerp>

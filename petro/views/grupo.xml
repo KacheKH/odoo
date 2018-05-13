@@ -1,0 +1,58 @@
+<openerp>
+    <data>
+        <!-- Vista tipo lista Horinzontal -->
+        <record model="ir.ui.view" id="petro.list_grupos">
+            <field name="name">Listado</field>
+            <field name="model">petro.grupo</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="codgrupo"/>
+                    <field name="name"/>
+                    <field name="clase_id"/>
+                </tree>
+            </field>
+        </record>
+        <!-- vistas de trs diferentes tipos Horinzontal,recuadro,hoja de datos -->
+        <record model="ir.actions.act_window" id="petro.action_window_grupos">
+            <field name="name">Grupos</field>
+            <field name="res_model">petro.grupo</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <!-- Zona designada para la busqueda personalizada -->
+        <record id="petro.list_search_grupos" model="ir.ui.view">
+            <field name="name">Búsqueda de Grupos</field>
+            <field name="model">petro.grupo</field>
+            <field name="arch" type="xml">
+                <search >
+                    <field name="codgrupo"/>
+                    <field name="name"/>
+                    <field name="clase_id"/>
+                </search>
+            </field>
+        </record>
+        <!-- zona designada para el ingreso de datos -->
+        <record model="ir.ui.view" id="petro.list_form_grupos">
+            <field name="name">Creación e edición</field>
+            <field name="model">petro.grupo</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <notebook>
+                            <page string="Grupos">
+                                <group>
+                                    <field name="codgrupo"/>
+                                    <field name="name"/>
+                                    <field name="clase_id"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        <!-- menu categories -->
+        <menuitem name="Grupos" id="petro.grupos" parent="petro.menu_root"/>
+        <!-- actions -->
+        <menuitem name="Listado" id="petro.grupos_list" parent="petro.grupos" action="petro.action_window_grupos"/>
+    </data>
+</openerp>
